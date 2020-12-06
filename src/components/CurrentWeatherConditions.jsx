@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import apiKey from '../api-key'
 import superAgent from 'superagent'
 import WeatherConditionsCard from './WeatherConditionsCard'
+import SearchCriteriaSelector from './SearchCriteriaSelector'
 
 const useStyles = makeStyles({
 	containerSpacing: {
@@ -18,8 +19,11 @@ const CurrentWeatherConditions = () => {
 	const classes = useStyles()
 
 	const [searchCriteria, setSearchCriteria] = useState('')
+	const [selectedSearchCriteriaType, setSelectedSearchCriteriaType] = useState('city')
 	const [currentWeatherConditions, setCurrentWeatherConditions] = useState({})
+
 	const handleSearchCriteriaChange = event => setSearchCriteria(event.target.value)
+	const handleSearchCriteriaTypeChange = event => setSelectedSearchCriteriaType(event.target.value)
 
 	const lookupWeatherConditions = async () => {
 		const url = `http://api.openweathermap.org/data/2.5/weather?q=${searchCriteria}&appid=${apiKey}&units=imperial`
@@ -37,7 +41,13 @@ const CurrentWeatherConditions = () => {
 				</Grid>
 				<Grid container justify="center" item xs={12} className={classes.containerSpacing}>
 					<form>
-						<TextField label="Enter a city" variant="outlined" value={searchCriteria} onChange={handleSearchCriteriaChange} />
+						<Grid item xs={12}>
+							<SearchCriteriaSelector selectedCriteria={selectedSearchCriteriaType} handleChange={handleSearchCriteriaTypeChange} />
+						</Grid>
+
+						<Grid item container justify="center" xs={12}>
+							<TextField label="Enter a city" variant="outlined" value={searchCriteria} onChange={handleSearchCriteriaChange} />
+						</Grid>
 					</form>
 				</Grid>
 				<Grid container justify="center" item xs={12} className={classes.containerSpacing}>

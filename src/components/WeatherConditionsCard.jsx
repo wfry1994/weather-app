@@ -54,13 +54,9 @@ const WeatherConditionsCard = ({ weatherConditions }) => {
 					&deg;
 					{renderDegreeUnit()}
 				</Typography>
-				<RadioGroup row>
-					<FormControlLabel
-						value="farenheit"
-						control={<Radio color="primary" checked={selectedDisplayUnits === 'farenheit'} onChange={handleDisplayUnitChange} />}
-						label="Farenheit"
-					/>
-					<FormControlLabel value="celsius" control={<Radio color="primary" checked={selectedDisplayUnits === 'celsius'} onChange={handleDisplayUnitChange} />} label="Celsius" />
+				<RadioGroup row value={selectedDisplayUnits} onChange={handleDisplayUnitChange}>
+					<FormControlLabel value="farenheit" control={<Radio color="primary" />} label="Farenheit" />
+					<FormControlLabel value="celsius" control={<Radio color="primary" />} label="Celsius" />
 				</RadioGroup>
 			</CardContent>
 		</Card>
