@@ -36,16 +36,6 @@ const CurrentWeatherConditions = () => {
 		setCurrentWeatherConditions(result.body)
 	}
 
-	const getSearchCriteriaInputLabel = () => {
-		if (selectedSearchCriteriaType === 'city') {
-			return 'Enter a city'
-		} else if (selectedSearchCriteriaType === 'zip') {
-			return 'Enter a zip code'
-		}
-
-		return 'Enter GPS coordinates'
-	}
-
 	return (
 		<>
 			<Grid container className={classes.containerSpacing}>
@@ -58,7 +48,7 @@ const CurrentWeatherConditions = () => {
 							<SearchCriteriaSelector selectedCriteria={selectedSearchCriteriaType} handleChange={handleSearchCriteriaTypeChange} />
 						</Grid>
 						<Grid item container justify="center" xs={12}>
-							<TextField label={getSearchCriteriaInputLabel()} variant="outlined" value={searchCriteria} onChange={handleSearchCriteriaChange} />
+							<TextField label="Enter Search Criteria" variant="outlined" value={searchCriteria} onChange={handleSearchCriteriaChange} />
 						</Grid>
 					</form>
 				</Grid>
