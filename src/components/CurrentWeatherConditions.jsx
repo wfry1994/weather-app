@@ -23,7 +23,10 @@ const CurrentWeatherConditions = () => {
 	const [currentWeatherConditions, setCurrentWeatherConditions] = useState({})
 
 	const handleSearchCriteriaChange = event => setSearchCriteria(event.target.value)
-	const handleSearchCriteriaTypeChange = event => setSelectedSearchCriteriaType(event.target.value)
+	const handleSearchCriteriaTypeChange = event => {
+		setSearchCriteria('')
+		setSelectedSearchCriteriaType(event.target.value)
+	}
 
 	const lookupWeatherConditions = async () => {
 		const url = `http://api.openweathermap.org/data/2.5/weather?q=${searchCriteria}&appid=${apiKey}&units=imperial`
@@ -31,6 +34,16 @@ const CurrentWeatherConditions = () => {
 		const result = await superAgent.get(url)
 		console.log(result)
 		setCurrentWeatherConditions(result.body)
+	}
+
+	const getSearchCriteriaInputLabel = () => {
+		if (selectedSearchCriteriaType === 'city') {
+			return 'Enter a city'
+		} else if (selectedSearchCriteriaType === 'zip') {
+			return 'Enter a zip code'
+		}
+
+		return 'Enter GPS coordinates'
 	}
 
 	return (
@@ -44,9 +57,8 @@ const CurrentWeatherConditions = () => {
 						<Grid item xs={12}>
 							<SearchCriteriaSelector selectedCriteria={selectedSearchCriteriaType} handleChange={handleSearchCriteriaTypeChange} />
 						</Grid>
-
 						<Grid item container justify="center" xs={12}>
-							<TextField label="Enter a city" variant="outlined" value={searchCriteria} onChange={handleSearchCriteriaChange} />
+							<TextField label={getSearchCriteriaInputLabel()} variant="outlined" value={searchCriteria} onChange={handleSearchCriteriaChange} />
 						</Grid>
 					</form>
 				</Grid>
