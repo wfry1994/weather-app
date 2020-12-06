@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
-import appComponent from './components/AppComponent'
+import CurrentWeatherConditions from './components/CurrentWeatherConditions'
 
 const Routes = () => (
 	<BrowserRouter basename="weather-app">
 		<Switch>
-			<Route exact path="/" component={appComponent} />
+			<Route exact path="/" component={CurrentWeatherConditions} />
 		</Switch>
 	</BrowserRouter>
 )
