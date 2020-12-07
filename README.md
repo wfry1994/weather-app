@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### API KEY
+
+This application uses [https://openweathermap.org/api] to lookup weather information. Create a file under the api folder named api-key.js and provide it a valid api key. This file should not be committed to source code.
+
+### Possible Improvements
+
+- Break formatting of the query string into a util function starting tests first
+- Bring the Error Snackbar to the top level of the application and introduce app context to set messages
+- Icons for current weather conditions (eg: cloudy, sunny, windy etc. . .)
+- Test react component renders
+- Deploy! (dockerize application & store api-key somewhere safe eg: vault, AWS KMS etc. . .)
+- provide more detailed weather information (hourly, daily, weekly etc. . .)
