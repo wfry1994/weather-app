@@ -72,7 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### API KEY
 
-This application uses [https://openweathermap.org/api] to lookup weather information. Create a file under the api folder named api-key.js and provide it a valid api key. This file should not be committed to source code.
+This application uses [https://openweathermap.org/api](https://openweathermap.org/api) to lookup weather information. Create a file under the api folder named api-key.js and provide it a valid api key. This file should not be committed to source code.
 
 ### Possible Improvements
 
