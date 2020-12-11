@@ -18,9 +18,16 @@ const WeatherConditionsCard = ({ weatherConditions }) => {
 	const [displayFeelsLikeTemp, setDisplayFeelsLikeTemp] = useState(null)
 	const [selectedDisplayUnits, setSelectedDisplayUnits] = useState('farenheit')
 
+
+	const getDisplayTemperature = (temperature, unit = selectedDisplayUnits) =>  unit === 'celsius' ? convertFarenheitToCelsius(temperature) : temperature
+	
+	const setDisplayTemperatures = unit => {
+		setDisplayTemperature(getDisplayTemperature(weatherConditions.main.temp, unit))
+		setDisplayFeelsLikeTemp(getDisplayTemperature(weatherConditions.main.feels_like, unit))
+	}
+
 	useEffect(() => {
-		setDisplayTemperature(weatherConditions.main.temp)
-		setDisplayFeelsLikeTemp(weatherConditions.main.feels_like)
+		setDisplayTemperatures()
 	}, [weatherConditions])
 
 	const renderDegreeUnit = () => {
@@ -33,12 +40,8 @@ const WeatherConditionsCard = ({ weatherConditions }) => {
 
 	const handleDisplayUnitChange = event => {
 		const unit = event.target.value
-		const newDisplayTemp = unit === 'celsius' ? convertFarenheitToCelsius(weatherConditions.main.temp) : weatherConditions.main.temp
-		const newFeelslikeTemp = unit === 'celsius' ? convertFarenheitToCelsius(weatherConditions.main.feels_like) : weatherConditions.main.feels_like
-
 		setSelectedDisplayUnits(unit)
-		setDisplayTemperature(newDisplayTemp)
-		setDisplayFeelsLikeTemp(newFeelslikeTemp)
+		setDisplayTemperatures(unit)
 	}
 
 	return (
