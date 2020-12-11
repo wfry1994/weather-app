@@ -1,6 +1,0 @@
-**/bundle*
-build/**/*
-package-lock.json
-.nyc_output/
-coverage/
-public/*

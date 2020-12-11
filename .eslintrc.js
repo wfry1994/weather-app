@@ -1,6 +1,6 @@
 module.exports = {
-	plugins: ['react', 'jest', 'prettier'],
-	extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
+	plugins: ['react', 'jest'],
+	extends: ['eslint:recommended', 'plugin:react/recommended'],
 	env: {
 		jest: true,
 		node: true,
@@ -28,13 +28,6 @@ module.exports = {
 		'no-mixed-spaces-and-tabs': 'off',
 		'no-unused-vars': 'off',
 		'no-console': 'off',
-		'prettier/prettier': [
-			'error',
-			{
-				trailingComma: 'es5',
-				arrowParens: 'avoid',
-			},
-		],
 	},
 	parser: 'babel-eslint',
 }
