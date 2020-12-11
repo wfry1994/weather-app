@@ -28,6 +28,7 @@ const CurrentWeatherConditions = () => {
 	const handleSearchCriteriaTypeChange = event => {
 		setSearchCriteria('')
 		setSelectedSearchCriteriaType(event.target.value)
+		setCurrentWeatherConditions(null)
 	}
 
 	const lookupCurrentWeatherCondition = async () => {

@@ -47,6 +47,7 @@ const WeatherConditionsCard = ({ weatherConditions }) => {
 	return (
 		<Card>
 			<CardContent>
+				<Typography> Location: {`${weatherConditions.name}, ${weatherConditions.sys.country}`} </Typography>
 				<Typography>
 					Current Temperature: {displayTemperature}
 					&deg;
